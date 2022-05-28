@@ -22,10 +22,14 @@ $(() => {
     form.show();
     $("#frame").hide();
   } else {
-    let qrcode = new QRCode(
-      document.getElementById("qrcode"),
-      "https://vk.com/chernushkachess"
-    );
+    let showQr = urlParams.has("qrCode");
+
+    let qrcode = showQr
+      ? new QRCode(
+          document.getElementById("qrcode"),
+          "https://vk.com/chernushkachess"
+        )
+      : null;
 
     setFrameHeight();
     $(window).on("resize", setFrameHeight);
@@ -45,8 +49,10 @@ $(() => {
       }
       let currentUrl = addresses[page];
       $("#frame").attr("src", currentUrl);
-      qrcode.clear();
-      qrcode.makeCode(currentUrl);
+      if (qrcode) {
+        qrcode.clear();
+        qrcode.makeCode(currentUrl);
+      }
     }
     nextPage();
     setInterval(nextPage, seconds * 1000);
