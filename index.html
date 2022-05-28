@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chess results viewer</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Федерация шахмат г. Чернушка" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="qrcode.min.js"></script>
+    <script src="logic.js"></script>
+    <style type="text/css">
+      .topcorner{
+        position:absolute;
+        top:0;
+        right:0;
+       }
+     </style>
+     
+  </head>
+  <body style="margin: 0px; padding: 0px; overflow: hidden">
+    <form id="configForm" method="get" style="display: none">
+      <!-- <p>
+        Для корректной работы требуется отключить CORS. Для Chrome используйте
+        <a
+          href="https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino/related?hl=ru"
+          >CORS Unblock</a
+        >
+      </p> -->
+
+      <div class="form-group">
+        <label for="trn">ID турниров через запятую</label>
+        <input
+          type="text"
+          class="form-control"
+          id="trn"
+          name="trn"
+          aria-describedby="urlHelp"
+          placeholder="641725, 641726"
+        />
+      </div>
+      <div class="form-group">
+        <label for="time">Частота обновления, секунд</label>
+        <input
+          type="number"
+          class="form-control-range"
+          id="time"
+          name="seconds"
+          min="5"
+          max="60"
+          value="15"
+          step="5"
+        />
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <iframe
+      id="frame"
+      frameborder="0"
+      height="100%"
+      width="900px"
+    ></iframe>
+    <div id="qrcode" class="topcorner"></div>
+    <div>
+      <a href="https://vk.com/chernushkachess">Федерация шахмат г. Чернушка</a>
+    </div>
+  </body>
+</html>
