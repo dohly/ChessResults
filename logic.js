@@ -18,14 +18,15 @@ $(() => {
   let urlParams = new URLSearchParams(window.location.search);
   let displayMode = urlParams.has("trn");
   let form = $("#configForm");
-  let qrcode = new QRCode(
-    document.getElementById("qrcode"),
-    "https://vk.com/chernushkachess"
-  );
   if (!displayMode) {
     form.show();
     $("#frame").hide();
   } else {
+    let qrcode = new QRCode(
+      document.getElementById("qrcode"),
+      "https://vk.com/chernushkachess"
+    );
+
     setFrameHeight();
     $(window).on("resize", setFrameHeight);
     let ids = urlParams
