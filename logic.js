@@ -23,6 +23,7 @@ $(() => {
     $("#frame").hide();
   } else {
     let showQr = urlParams.has("qrCode");
+    let showScroll = urlParams.has("scroll");
 
     let qrcode = showQr
       ? new QRCode(
@@ -42,6 +43,9 @@ $(() => {
       .concat(ids.map((x) => getUrl(x, 2, 12)));
     var page = 0;
     let seconds = urlParams.has("seconds") ? urlParams.get("seconds") : 15;
+    if (!showScroll){
+      $("#frame").attr("scrolling", "no");
+    }
     function nextPage() {
       page++;
       if (page >= addresses.length) {
