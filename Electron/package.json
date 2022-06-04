@@ -1,0 +1,16 @@
+{
+  "name": "oafish-imagination-admire-8m2ht",
+  "productName": "oafish-imagination-admire-8m2ht",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "Dohly",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "18.2.3"
+  }
+}
