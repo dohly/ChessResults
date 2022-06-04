@@ -34,16 +34,25 @@ $(() => {
 
     setFrameHeight();
     $(window).on("resize", setFrameHeight);
+    let arts = urlParams.has("arts")
+      ? urlParams
+          .get("arts")
+          .split(",")
+          .map((x) => x.trim())
+      : [1, 2];
+
     let ids = urlParams
       .get("trn")
       .split(",")
       .map((x) => x.trim());
-    let addresses = ids
-      .map((x) => getUrl(x, 1, 12))
-      .concat(ids.map((x) => getUrl(x, 2, 12)));
+    let queryParams = [];
+    ids.forEach((id) => arts.forEach((a) => queryParams.push([id, a])));
+    let addresses = queryParams
+      .map((x) => getUrl(x[0], x[1], 12));
+    console.log(addresses);
     var page = 0;
     let seconds = urlParams.has("seconds") ? urlParams.get("seconds") : 15;
-    if (!showScroll){
+    if (!showScroll) {
       $("#frame").attr("scrolling", "no");
     }
     function nextPage() {
