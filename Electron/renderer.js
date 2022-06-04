@@ -66,7 +66,7 @@ $(() => {
             $("#frame").attr("src", currentUrl);
             if (qrcode) {
                 qrcode.clear();
-                qrcode.makeCode(currentUrl);
+                qrcode.makeCode(currentUrl.split("?")[0]);
             }
         }
         nextPage();
