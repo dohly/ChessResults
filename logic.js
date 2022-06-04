@@ -8,7 +8,7 @@ function isValidUrl(string) {
   return url.host == "chess-results.com" && url.pathname.startsWith("/tnr");
 }
 function getUrl(id, art, font) {
-  return `https://chess-results.com/tnr${id}.aspx?lan=11&art=${art}&wi=800&rd=-1&iframe=NOADV&css=1&links=NOT&fontsize=${font}`;
+  return `https://chess-results.com/tnr${id}.aspx?lan=11&art=${art}&wi=800&rd=-1&iframe=NOADV&css=1$turdet=NO&links=NO&fontsize=${font}`;
 }
 function setFrameHeight() {
   let content_height = $(window).height();
@@ -24,7 +24,6 @@ $(() => {
   } else {
     let showQr = urlParams.has("qrCode");
     let showScroll = urlParams.has("scroll");
-
     let qrcode = showQr
       ? new QRCode(
           document.getElementById("qrcode"),
@@ -47,8 +46,7 @@ $(() => {
       .map((x) => x.trim());
     let queryParams = [];
     ids.forEach((id) => arts.forEach((a) => queryParams.push([id, a])));
-    let addresses = queryParams
-      .map((x) => getUrl(x[0], x[1], 12));
+    let addresses = queryParams.map((x) => getUrl(x[0], x[1], 12));
     console.log(addresses);
     var page = 0;
     let seconds = urlParams.has("seconds") ? urlParams.get("seconds") : 15;
